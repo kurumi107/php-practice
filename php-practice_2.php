@@ -40,9 +40,9 @@ $personalInfos = [
 ];
 echo $personalInfos[1]['name'] . 'の電話番号は' . $personalInfos[1]['tel'] . 'です。';
 
-foreach ($personalInfos as $x=>$y) 
+foreach ($personalInfos as $index=>$value) 
 {
-    echo  $x+1 . '番目の' . $y['name'] . 'のメールアドレスは' . $y['mail'] . 'で、電話番号は' . $y['tel'] . 'です。' . "\n";
+    echo  $index+1 . '番目の' . $value['name'] . 'のメールアドレスは' . $value['mail'] . 'で、電話番号は' . $value['tel'] . 'です。' . "\n";
 }
 
 $ageList = 
@@ -77,8 +77,7 @@ class Student
 
 $yamada = new Student(120, '山田');
 echo '学籍番号' . $yamada->studentId . '番の生徒は' . $yamada->studentName . 'です。';
-// $yamada->attend();
-echo '学籍番号' . さっき作ったオブジェクト->studentId . '番の生徒は' . ->studentName . 'です。';
+
 
 // Q4 オブジェクト-2
 class Student

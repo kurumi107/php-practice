@@ -95,14 +95,14 @@ $pref =
 $pref['愛知県'] = '名古屋市';
 $pref['大阪府'] = '大阪市';
 
-foreach($pref as $x => $y)
+foreach($pref as $key => $value)
 {
-    if($x === '東京都' || $x === '茨城県' || $x === '栃木県' || $x === '群馬県' || $x === '埼玉県' || $x === '千葉県' || $x === '神奈川県') 
+    if($key === '東京都' || $key === '茨城県' || $key === '栃木県' || $key === '群馬県' || $key === '埼玉県' || $key === '千葉県' || $key === '神奈川県') 
     {
-        echo $x . 'の県庁所在地は、' . $y . 'です。' . "\n";
+        echo $key . 'の県庁所在地は、' . $value . 'です。' . "\n";
     } else 
     {
-        echo $x . 'は関東地方ではありません。' . "\n";
+        echo $key . 'は関東地方ではありません。' . "\n";
     }
     
 }
@@ -117,14 +117,13 @@ echo hello('近藤さん');
 echo hello('大橋さん');
 
 // Q11 関数-2
-echo $taxInPrice = calcTaxInPrice('1000');
-function calcTaxInPrice()
+$price = 1000;
+function calcTaxInPrice($price)
 {
-    $price = 1000;
     return $price . '円の商品の税込価格は' . $price*1.1 . '円です。'; 
 }
 
-echo $taxInPrice = calcTaxInPrice();
+echo $taxInPrice = calcTaxInPrice($price);
 
 // Q12 関数とif文
 function distinguishNum($num)

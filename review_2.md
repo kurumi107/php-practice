@@ -51,5 +51,5 @@ $prev = new DateTime('2000-1-1');
 echo $prev->diff($now)->format('%a')
 ```
 
-- datetimeクラスをphpマニュアルで開く、public diffというメソッドを開く、二つのdatetimeメソッドの差を返すとあるためコードの返り値は$nowと$prevの差を返している
+- datetimeクラスをphpマニュアルで開く、public diffというメソッドを開く、二つのdatetimeオブジェクトの差を返すとあるためコードの返り値は$nowと$prevの差を返している、画面右にformatと選べるので選択、指定した書式でフォーマットした日付を返すとあるため、datetimeオブジェクトの差を指定した書式でフォーマットした日付が返ってくる
 
