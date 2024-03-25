@@ -109,5 +109,5 @@ echo $date->modify('-1 month')->format('Y-m-d');
 
 $start = new DateTime('1992-04-25');
 $end = new DateTime();
-echo $interval = $end->diff($start)->format('あの日から%a日経過しました。');
+echo $end->diff($start)->format('あの日から%a日経過しました。');
 ?> 

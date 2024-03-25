@@ -54,9 +54,9 @@ $pref =
     '神奈川県' => '横浜市'
 ];
 
-foreach ($pref as $x => $y)
+foreach ($pref as $value)
 {
-    echo $y . "\n";
+    echo $value . "\n";
 }
 
 
@@ -72,12 +72,16 @@ $pref =
     '神奈川県' => '横浜市'
 ];
 
-foreach ($pref as $x => $y)
+foreach ($pref as $key => $value)
 {
-    if($x === '埼玉県' && $y === 'さいたま市')
+    // 繰り返したい処理
+    if($key === '埼玉県')
     {
-        echo $x . 'の県庁所在地は' . $y . 'です。';
-    }
+        echo $key . 'の県庁所在地は' . $value . 'です。';
+        break;
+    } 
+    
+
 }
 
 // Q9 連想配列-3
@@ -95,35 +99,46 @@ $pref =
 $pref['愛知県'] = '名古屋市';
 $pref['大阪府'] = '大阪市';
 
-foreach($pref as $key => $value)
+foreach ($pref as $key => $value)
 {
-    if($key === '東京都' || $key === '茨城県' || $key === '栃木県' || $key === '群馬県' || $key === '埼玉県' || $key === '千葉県' || $key === '神奈川県') 
-    {
+    if (
+        $key === '東京都' ||
+        $key === '茨城県' || 
+        $key === '栃木県' || 
+        $key === '群馬県' || 
+        $key === '埼玉県' || 
+        $key === '千葉県' || 
+        $key === '神奈川県'
+    ) {
         echo $key . 'の県庁所在地は、' . $value . 'です。' . "\n";
     } else 
     {
         echo $key . 'は関東地方ではありません。' . "\n";
     }
-    
 }
 
 // Q10 関数-1
-function hello($name)
+function hello($name) // 仮引数
 {
-    return $name . '、こんにちは。' . "\n";
+    return $name . 'さん、こんにちは。' . "\n";
 }
 
-echo hello('近藤さん');
-echo hello('大橋さん');
+echo hello('近藤'); // 実引数
+echo hello('大橋');
 
 // Q11 関数-2
-$price = 1000;
-function calcTaxInPrice($price)
+
+// 定義
+function calcTaxInPrice($nonTaxPrice)
 {
-    return $price . '円の商品の税込価格は' . $price*1.1 . '円です。'; 
+    return $nonTaxPrice . '円の商品の税込価格は' . $nonTaxPrice*1.1 . '円です。'; 
 }
 
-echo $taxInPrice = calcTaxInPrice($price);
+$price = 1000;
+// 実行
+$taxInPrice = calcTaxInPrice($price);//実引数
+echo $taxInPrice;
+
 
 // Q12 関数とif文
 function distinguishNum($num)
@@ -138,30 +153,32 @@ function distinguishNum($num)
 
 }
 
-echo distinguishNum('11');
-echo distinguishNum('24');
+echo distinguishNum(11);
+echo distinguishNum(24);
 
 // Q13 関数とswitch文
 function evaluateGrade($test)
 {
-switch ($test) {
-    case 'A':
-    case 'B':
-        return '合格です。' . "\n";
-        break;
+    switch ($test) {
+        case 'A':
+        case 'B':
+            return '合格です。' . "\n";
+            // break; // 条件分岐やループ処理（繰り返し構文）を終わらせる
 
-    case 'C':
-        return '合格ですが追加課題があります。' . "\n";
-        break;
+        case 'C':
+            return '合格ですが追加課題があります。' . "\n";
+            // break;
 
-    case 'D':
-        return '不合格です。' . "\n";
-        break;
+        case 'D':
+            return '不合格です。' . "\n";
+            // break;
 
-    default:
-        return '判定不明です。講師に問い合わせてください。' . "\n";
-        break;
-}
+        default:
+            return '判定不明です。講師に問い合わせてください。' . "\n";
+            // break;
+    }
+
+    // echo "owatta";
 
 }
 
