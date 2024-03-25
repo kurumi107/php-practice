@@ -40,17 +40,20 @@ $personalInfos = [
 ];
 echo $personalInfos[1]['name'] . 'の電話番号は' . $personalInfos[1]['tel'] . 'です。';
 
-$num = 0;
-foreach ($personalInfos as $x) 
+foreach ($personalInfos as $x=>$y) 
 {
-    $num ++;
-    echo  $num . '番目の' . $x['name'] . 'のメールアドレスは' . $x['mail'] . 'で、電話番号は' . $x['tel'] . 'です。' . "\n";
+    echo  $x+1 . '番目の' . $y['name'] . 'のメールアドレスは' . $y['mail'] . 'で、電話番号は' . $y['tel'] . 'です。' . "\n";
 }
 
-$ageList = [25, 30, 18];
-foreach($ageList as $key=>$value)
+$ageList = 
+[
+    25, 
+    30, 
+    18
+];
+foreach($ageList as $index=>$value)
 {
-   $personalInfos[$key]['age'] = $value;
+   $personalInfos[$index]['age'] = $value;
 }
 
 var_dump($personalInfos);
@@ -59,7 +62,6 @@ class Student
 {
     public $studentId;
     public $studentName;
-    
 
     public function __construct($id, $name)
     {
@@ -69,12 +71,14 @@ class Student
 
     public function attend()
     {
-        echo '学籍番号' . $this->studentId . '番の生徒は' . $this->studentName . 'です。';
+        echo '授業に出席しました。';
     }
 }
 
-$yamada = new Student(120,'山田');
-$yamada -> attend();
+$yamada = new Student(120, '山田');
+echo '学籍番号' . $yamada->studentId . '番の生徒は' . $yamada->studentName . 'です。';
+// $yamada->attend();
+echo '学籍番号' . さっき作ったオブジェクト->studentId . '番の生徒は' . ->studentName . 'です。';
 
 // Q4 オブジェクト-2
 class Student
@@ -96,18 +100,15 @@ class Student
 }
 
 $yamada = new Student(120,'山田');
-$yamada -> attend('PHP');
+$yamada->attend('PHP');
 
 // Q5 定義済みクラス
 date_default_timezone_set('Asia/Tokyo');
 $date = new DateTime();
-$date->modify('+1 month');
-echo $date->format('Y-m-d');
+echo $date->modify('-1 month')->format('Y-m-d');
 
 
 $start = new DateTime('1992-04-25');
 $end = new DateTime();
-$interval = $end->diff($start);
-echo $interval->format('あの日から%a日経過しました。');
-
+echo $interval = $end->diff($start)->format('あの日から%a日経過しました。');
 ?> 
