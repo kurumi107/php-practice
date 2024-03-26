@@ -51,4 +51,6 @@ $prev = new DateTime('2000-1-1');
 echo $prev->diff($now)->format('%a')
 ```
 
-- datetimeクラスをphpマニュアルで開く、diffメソッドを開く、返り値はdateinterval型ということがわかる、diff($now)はdateintervalクラスに変わる、dateintervalクラスのformatメソッドを開く、返り値は文字列が返ってくることがわかる
+- DateTimeクラスをphpマニュアルで開く、diffメソッドを開く、返り値はオブジェクト型（DateInterval）ということが分かる、（$prev->diff($now)）はオブジェクトとなる、DateIntervalクラスのページを開きformatメソッドを開く、返り値はデータ型（string）ということが分かる
+
+
