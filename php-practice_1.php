@@ -19,72 +19,126 @@ if ($device === 'mac' || $device === 'windows')
 {
     echo '使用OSは、' . $device . 'です。';
 }
-else {
+else 
+{
     echo 'どちらでもありません。';
 }
 
 // Q5 条件分岐-2 三項演算子
 $age = 17;
-$age = ($age>=18)? '成人です。' : '未成年です。';
-echo $age;
+echo ($age>=18)? '成人です。' : '未成年です。';
+
 
 // Q6 配列
-$pref = ['東京都', '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '神奈川県'];
-echo $pref[2] . 'と' . $pref[5] . 'は関東地方の都道府県です。';
+$pref =
+[
+    '東京都',
+    '茨城県',
+    '栃木県',
+    '群馬県',
+    '埼玉県',
+    '千葉県',
+    '神奈川県'
+];
+echo $pref[2] . 'と' . $pref[3] . 'は関東地方の都道府県です。';
 
 // Q7 連想配列-1
-$pref = ['東京都' => '新宿区', '茨城県' => '水戸市', '栃木県' => '宇都宮市', '群馬県' => '前橋市', '埼玉県' => 'さいたま市', '千葉県' => '千葉市', '神奈川県' => '横浜市'];
-echo $pref['東京都'] . "\n";
-echo $pref['神奈川県'] . "\n";
-echo $pref['千葉県'] . "\n";
-echo $pref['埼玉県'] . "\n";
-echo $pref['栃木県'] . "\n";
-echo $pref['群馬県'] . "\n";
-echo $pref['茨城県'] . "\n";
+$pref = 
+[
+    '東京都' => '新宿区', 
+    '茨城県' => '水戸市', 
+    '栃木県' => '宇都宮市', 
+    '群馬県' => '前橋市', 
+    '埼玉県' => 'さいたま市', 
+    '千葉県' => '千葉市', 
+    '神奈川県' => '横浜市'
+];
+
+foreach ($pref as $value)
+{
+    echo $value . "\n";
+}
+
 
 // Q8 連想配列-2
-$pref = ['東京都' => '新宿区', '茨城県' => '水戸市', '栃木県' => '宇都宮市', '群馬県' => '前橋市', '埼玉県' => 'さいたま市', '千葉県' => '千葉市', '神奈川県' => '横浜市'];
+$pref = 
+[
+    '東京都' => '新宿区', 
+    '茨城県' => '水戸市', 
+    '栃木県' => '宇都宮市', 
+    '群馬県' => '前橋市', 
+    '埼玉県' => 'さいたま市', 
+    '千葉県' => '千葉市', 
+    '神奈川県' => '横浜市'
+];
 
-    foreach ($pref as $x => $y)
+foreach ($pref as $key => $value)
 {
-    if($x === '埼玉県' && $y === 'さいたま市')
+    // 繰り返したい処理
+    if($key === '埼玉県')
     {
-        echo $x . 'の県庁所在地は' . $y . 'です。';
-    }
+        echo $key . 'の県庁所在地は' . $value . 'です。';
+        break;
+    } 
+    
+
 }
 
 // Q9 連想配列-3
-$pref = ['東京都' => '新宿区', '茨城県' => '水戸市', '栃木県' => '宇都宮市', '群馬県' => '前橋市', '埼玉県' => 'さいたま市', '千葉県' => '千葉市', '神奈川県' => '横浜市', '愛知県' => '名古屋市',
-'大阪府' => '大阪市'];
+$pref = 
+[
+    '東京都' => '新宿区', 
+    '茨城県' => '水戸市',
+    '栃木県' => '宇都宮市', 
+    '群馬県' => '前橋市', 
+    '埼玉県' => 'さいたま市', 
+    '千葉県' => '千葉市', 
+    '神奈川県' => '横浜市', 
+];
 
-foreach($pref as $x => $y)
+$pref['愛知県'] = '名古屋市';
+$pref['大阪府'] = '大阪市';
+
+foreach ($pref as $key => $value)
 {
-    if($x === '東京都' || $x === '茨城県' || $x === '栃木県' || $x === '群馬県' || $x === '埼玉県' || $x === '千葉県' || $x === '神奈川県') 
-    {
-        echo $x . 'の県庁所在地は、' . $y . 'です。' . "\n";
+    if (
+        $key === '東京都' ||
+        $key === '茨城県' || 
+        $key === '栃木県' || 
+        $key === '群馬県' || 
+        $key === '埼玉県' || 
+        $key === '千葉県' || 
+        $key === '神奈川県'
+    ) {
+        echo $key . 'の県庁所在地は、' . $value . 'です。' . "\n";
     } else 
     {
-        echo $x . 'は関東地方ではありません。' . "\n";
+        echo $key . 'は関東地方ではありません。' . "\n";
     }
-    
 }
 
 // Q10 関数-1
-function hello($name)
+function hello($name) // 仮引数
 {
-    echo $name . '、こんにちは。' . "\n";
+    return $name . 'さん、こんにちは。' . "\n";
 }
 
-hello('近藤さん');
-hello('大橋さん');
+echo hello('近藤'); // 実引数
+echo hello('大橋');
 
 // Q11 関数-2
-function calcTaxInPrice($price)
+
+// 定義
+function calcTaxInPrice($nonTaxPrice)
 {
-    return $price . '円の商品の税込価格は' . $price *1.1 . '円です。'; 
+    return $nonTaxPrice . '円の商品の税込価格は' . $nonTaxPrice*1.1 . '円です。'; 
 }
 
-echo $taxInPrice = calcTaxInPrice('1000');
+$price = 1000;
+// 実行
+$taxInPrice = calcTaxInPrice($price);//実引数
+echo $taxInPrice;
+
 
 // Q12 関数とif文
 function distinguishNum($num)
@@ -99,30 +153,32 @@ function distinguishNum($num)
 
 }
 
-echo distinguishNum('11');
-echo distinguishNum('24');
+echo distinguishNum(11);
+echo distinguishNum(24);
 
 // Q13 関数とswitch文
 function evaluateGrade($test)
 {
-switch ($test) {
-    case 'A':
-    case 'B':
-        echo '合格です。' . "\n";
-        break;
+    switch ($test) {
+        case 'A':
+        case 'B':
+            return '合格です。' . "\n";
+            // break; // 条件分岐やループ処理（繰り返し構文）を終わらせる
 
-    case 'C':
-        echo '合格ですが追加課題があります。' . "\n";
-        break;
+        case 'C':
+            return '合格ですが追加課題があります。' . "\n";
+            // break;
 
-    case 'D':
-        echo '不合格です。' . "\n";
-        break;
+        case 'D':
+            return '不合格です。' . "\n";
+            // break;
 
-    default:
-        echo '判定不明です。講師に問い合わせてください。' . "\n";
-        break;
-}
+        default:
+            return '判定不明です。講師に問い合わせてください。' . "\n";
+            // break;
+    }
+
+    // echo "owatta";
 
 }
 
